@@ -1,13 +1,10 @@
-//  Hello World client in Java
-//  Connects REQ socket to tcp://localhost:5555
-//  Sends "Hello" to server, expects "World" back
+package REQ_REP;
 
 import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 import org.zeromq.ZContext;
 
-public class HelloWorldClient
-{
+public class HWClient {
     public static void main(String[] args)
     {
         try (ZContext context = new ZContext()) {

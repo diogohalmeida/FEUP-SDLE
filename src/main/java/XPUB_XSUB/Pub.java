@@ -1,18 +1,23 @@
+package XPUB_XSUB;
+
 import org.zeromq.SocketType;
 import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
-import org.zeromq.ZThread;
+import org.zeromq.ZMQ.Socket;
 
 import java.util.Random;
 
-public class PublisherUS{
+//  Hello World worker
+//  Connects REP socket to tcp://*:5560
+//  Expects "Hello" from client, replies with "World"
+public class Pub
+{
     public static void main(String[] args) throws Exception
     {
         //  Prepare our context and publisher
         try (ZContext context = new ZContext()) {
             ZMQ.Socket publisher = context.createSocket(SocketType.PUB);
-            publisher.bind("tcp://*:5555");
-            publisher.bind("ipc://weatherUS");
+            publisher.connect("tcp://*:5559");
 
             //  Initialize random number generator
             Random srandom = new Random(System.currentTimeMillis());
