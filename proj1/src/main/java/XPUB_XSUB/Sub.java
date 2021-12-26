@@ -40,15 +40,16 @@ public class Sub
                 int relhumidity = Integer.valueOf(sscanf.nextToken());
 
                 total_temp += temperature;
+                System.out.println(
+                        String.format(
+                                "Average temperature for zipcode '%s' was %d.",
+                                filter,
+                                (int)(total_temp / update_nbr)
+                        )
+                );
+
             }
 
-            System.out.println(
-                    String.format(
-                            "Average temperature for zipcode '%s' was %d.",
-                            filter,
-                            (int)(total_temp / update_nbr)
-                    )
-            );
 
             subscriber.unsubscribe(filter.getBytes(ZMQ.CHARSET));
         }
